@@ -2,4 +2,4 @@
 
 Upload a CSV file and get a quick overview of its contents.
 
-Try it live: [your deployed URL here]
+Try it live: [csvfileviewer-cxndzfopdrawjsymvkoc6g]
