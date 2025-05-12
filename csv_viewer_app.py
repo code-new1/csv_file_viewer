@@ -33,14 +33,20 @@ if uploaded_file:
     #This approach gives you more customization than st.bar_chart().
     
     st.subheader("example of bar graph") 
-    # Plot using Pandas
-    fig, ax = plt.subplots()
-    grouped.plot(kind="barh", ax=ax, figsize=(10, 6), color='skyblue')
-    ax.set_xlabel("Total Price")
-    ax.set_ylabel("Product Name")
-    ax.set_title("Total Sales by Product")
+    if "Product Name" in cleaned_df.columns and "Total Price" in cleaned_df.columns:
+       st.subheader("📈 Total Price by Product (Pandas Plot)")
 
-    st.pyplot(fig)
+       # Prepare data
+       grouped = cleaned_df.groupby("Product Name")["Total Price"].sum().sort_values()
+
+       # Plot
+       fig, ax = plt.subplots(figsize=(10, 6))  # Moved figsize here
+       grouped.plot(kind="barh", ax=ax, color='skyblue')
+       ax.set_xlabel("Total Price")
+       ax.set_ylabel("Product Name")
+       ax.set_title("Total Sales by Product")
+
+       st.pyplot(fig)
     
     # Example analysis: summary stats
     st.subheader("📊 Summary Statistics")
