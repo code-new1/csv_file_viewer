@@ -1,23 +1,27 @@
 import streamlit as st
 import pandas as pd
 
-st.title("📊 CSV File Viewer")
+st.title("📂 Upload and Process a File")
 
-# File uploader widget
-uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
+# Upload a CSV file
+uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 
-if uploaded_file is not None:
-    try:
-        # Read the uploaded CSV
-        df = pd.read_csv(uploaded_file)
-        
-        st.success("File successfully loaded!")
-        st.write(f"🔢 Rows: {df.shape[0]}, Columns: {df.shape[1]}")
+if uploaded_file:
+    # Read the file into a DataFrame
+    df = pd.read_csv(uploaded_file)
 
-        # Show preview
-        st.subheader("📄 Data Preview")
-        st.dataframe(df.head())
+    st.subheader("✅ Raw Data Preview")
+    st.write(df.head())
 
-        # Show column names
-        if st.checkbox("Show column names"):
-            st.write(df.columns.tolist())
+    # Example processing: drop missing values
+    cleaned_df = df.dropna()
+
+    st.subheader("🧹 Cleaned Data (No Missing Values)")
+    st.write(cleaned_df.head())
+
+    # Example analysis: summary stats
+    st.subheader("📊 Summary Statistics")
+    st.write(cleaned_df.describe())
+
+else:
+    st.info("Please upload a CSV file to continue.")
