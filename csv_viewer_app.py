@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
 st.title("📂 Upload and Process a File")
 
@@ -26,9 +27,20 @@ if uploaded_file:
 
     st.subheader("example of shape function")
     st.write(f"🔢 Rows: {df.shape[0]}, Columns: {df.shape[1]}")
-
+    
+    #df.plot() returns a Matplotlib object — use st.pyplot(fig) to render it.
+    #You must import matplotlib.pyplot as plt.
+    #This approach gives you more customization than st.bar_chart().
+    
     st.subheader("example of bar graph") 
-    ax = df.plot.bar(rot=0)
+    # Plot using Pandas
+    fig, ax = plt.subplots()
+    grouped.plot(kind="barh", ax=ax, figsize=(10, 6), color='skyblue')
+    ax.set_xlabel("Total Price")
+    ax.set_ylabel("Product Name")
+    ax.set_title("Total Sales by Product")
+
+    st.pyplot(fig)
     
     # Example analysis: summary stats
     st.subheader("📊 Summary Statistics")
