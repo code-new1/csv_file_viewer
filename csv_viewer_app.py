@@ -15,8 +15,8 @@ if uploaded_file:
 
     # Example processing: drop missing values
     #cleaned_df = df.dropna()
-#fill with 0
-   df_filled = df.fillna(0)
+    #fill with 0
+    df_filled = df.fillna(0)
 
     st.subheader("🧹 Cleaned Data (No Missing Values)")
     st.write(cleaned_df.head())
