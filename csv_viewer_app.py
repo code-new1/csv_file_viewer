@@ -14,7 +14,7 @@ if uploaded_file:
     st.write(df.head())
 
     # Example processing: drop missing values
-    #cleaned_df = df.dropna()
+    cleaned_df = df.dropna()
     #fill with 0
     df_filled = df.fillna(0)
 
