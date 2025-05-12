@@ -14,12 +14,18 @@ if uploaded_file:
     st.write(df.head())
 
     # Example processing: drop missing values
-    cleaned_df = df.dropna()
-    #fill with 0
-    df_filled = df.fillna(0)
+    cleaned_df = df.dropna()  
 
     st.subheader("🧹 Cleaned Data (No Missing Values)")
     st.write(cleaned_df.head())
+    
+    #fill with 0 for null values
+    df_filled = df.fillna(0)
+    st.subheader("Filled with 0  null values")
+    st.write(df_filled.head())
+
+    st.subheader("example of shape function")
+    st.write(f"🔢 Rows: {df.shape[0]}, Columns: {df.shape[1]}")
 
     # Example analysis: summary stats
     st.subheader("📊 Summary Statistics")
