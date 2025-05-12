@@ -27,6 +27,9 @@ if uploaded_file:
     st.subheader("example of shape function")
     st.write(f"🔢 Rows: {df.shape[0]}, Columns: {df.shape[1]}")
 
+    st.subheader("example of bar graph") 
+    ax = df.plot.bar(rot=0)
+    
     # Example analysis: summary stats
     st.subheader("📊 Summary Statistics")
     st.write(cleaned_df.describe())
